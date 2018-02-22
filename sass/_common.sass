@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700')
+
+// COLOR variables
+$text-color: #3c3c3c
+$base-color: #fff
+$template-color: rgb(172,183,203)
+$template-color-rgba: rgba(172,183,203,0.5)
+$template-color-rgba-light: rgba(172,183,203,0.1)
+$button-bg: $text-color
+$button-color: $base-color
+
+// FONT variables
+$basic-font: 'Lato', sans-serif
+$base-font-size: 16px
+
+// RWD 
+$pc: "(max-width: 1199px)"
+$tablets: "(max-width: 991px)"
+$phones: "(max-width: 767px)"
+$small: "(max-width: 479px)"
+
+// MIXINS
+=translate($posX, $posY)
+	-ms-transform:      translate($posX, $posY)
+	-webkit-transform:  translate($posX, $posY)
+	transform:          translate($posX, $posY)
+=scale($x, $y)
+	-ms-transform:      scale($x, $y)
+	-webkit-transform:  scale($x, $y)
+	transform:          scale($x, $y)
+=transition($transition)
+	-webkit-transition: $transition
+	-moz-transition:    $transition
+	transition:         $transition
+
+// GLOBAL styles
+*
+	box-sizing: border-box
+body 
+	margin: 0
+	font-family: $basic-font
+	color: $text-color
+	background: $base-color
+	font-size: $base-font-size
+	overflow-x: hidden
+section
+	position: relative
+	&>.container
+		padding-top: 150px
+		padding-bottom: 150px
+.container
+	width: 100%
+	max-width: 1170px
+	margin: 0 auto
+	padding-left: 30px
+	padding-right: 30px
+h1, h2, h3
+	text-align: center
+	text-transform: uppercase
+	font-weight: 700
+	letter-spacing: 8px
+h1
+	font-size: 54px
+	line-height: 64px
+h2
+	font-size: 34px
+	&.jm-big
+		font-size: 34px
+h3
+	font-size: 20px
+@media #{$phones}
+	h1
+		font-size: 40px
+	h2
+		font-size: 26px
+		&.jm-big
+			font-size: 30px
+	h3
+		font-size: 24px
+@media #{$small}
+	h1
+		font-size: 32px
+	h2
+		font-size: 22px
+		&.jm-big
+			font-size: 26px
+	h3
+		font-size: 20px
+p
+	text-align: center
+	line-height: 29px
+	display: block
+	margin: 30px auto
+	width: 100%
+	max-width: 573px
+	font-weight: 300
+.jm-btn
+	display: block
+	margin: 30px auto 0 auto
+	width: 80%
+	max-width: 400px
+	text-transform: uppercase
+	font-weight: 400
+	line-height: 50px
+	border: none
+	background-color: $button-bg
+	color: $button-color
+	text-align: center
+	+transition(.4s ease-in-out)
+	&:hover
+		text-decoration: none
+		background-color: $button-bg
+		color: $button-color
+		+scale(1.1, 1.1)
+/* OVERLAYS AND SECTION BORDERS */
+.overlay
+	position: absolute
+	top: 0
+	width: 100%
+	height: 100%
+	background: $template-color-rgba
+.bordered
+	position: relative
+	padding: 50px 20px
+	border-top: none
+	border-left: 2px solid $text-color
+	border-right: 2px solid $text-color
+	border-bottom: 2px solid $text-color
+	h2
+			width: 60%
+			position: absolute
+			top: -17px
+			left: 50%
+			+translate(-50%, -50%)
+	&.bordered-white
+		border-color: $base-color
+		&::before,
+		&::after
+			border-color: $base-color
+	&::before,
+	&::after
+		content: " "
+		width: 20%
+		position: absolute
+		top: 0
+		border-top: 2px solid $text-color
+	&::before
+		left: 0
+	&::after
+		right: 0
+@media #{$small}
+	.bordered
+		h2
+			width: 80%
+		&::before,
+		&::after
+			width: 10%
+/* SCROLLER */
+.scroller
+	position: absolute
+	bottom: 30px
+	left: 50%
+	+translate(-50%, 0)
+	.scroll
+		display: block
+		width: 26px
+		height: 40px
+		border: 2px solid $base-color
+		border-radius: 13px
+		position: relative
+		&.scroll-dark
+			border-color: $text-color
+			&::after
+				background: $text-color
+		&::after
+			content: ""
+			position: absolute
+			width: 6px
+			height: 6px
+			background: $base-color
+			top: 6px
+			left: calc(50% - 3px)
+			border-radius: 50px
+			+transition(.4s)
+		&:hover
+			&::after
+				top: 25px
